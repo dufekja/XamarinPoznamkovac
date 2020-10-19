@@ -11,18 +11,25 @@ namespace Poznamkovac {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddNotesPage : ContentPage {
 
-        public static int id;
+        public static List<Note> noteList;
+        public static int notesCount;
+        public static string ID;
 
-        public AddNotesPage(int _id = -1) {
+        public AddNotesPage(string ID, List<Note> _noteList) {
+
             InitializeComponent();
 
-            id = _id;
+            noteList = _noteList;
+            notesCount = noteList.Count;
 
+            if (ID != null) {
+                Note note = noteList[int.Parse(ID)];
+                NoteLabel.Text = note.Label;
+                NoteText.Text = note.Text;
+            }
         }
 
         public void ProcessNote(object sender, EventArgs args) {
-
-            
 
             Note note = new Note {
                 Label = NoteLabel.Text.ToString(),
@@ -30,15 +37,18 @@ namespace Poznamkovac {
                 Date = DateTime.UtcNow
             };
 
-            if (id != -1)
-                note.ID = id;
+            if (ID != null) {
+                note.ID = int.Parse(ID);
+            } else {
+                note.ID = -69;
+            }
 
-            SaveNote(note);
+            SaveNote(note, notesCount);
             Navigation.PopAsync();
         }
 
-        protected async void SaveNote(Note note) {
-            await App.Database.SaveNoteAsync(note);
+        protected async void SaveNote(Note note, int notesCount) {
+            await App.Database.SaveNoteAsync(note, notesCount);
         }
     }
 }

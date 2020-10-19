@@ -23,10 +23,13 @@ namespace Poznamkovac.Database {
                             .FirstOrDefaultAsync();
         }
 
-        public Task<int> SaveNoteAsync(Note note) {
-            if (note.ID != -1) {
+        public Task<int> SaveNoteAsync(Note note, int notesCount) {
+            if (note.ID != -69) {
+                Console.WriteLine("Updajt");
                 return _DB.UpdateAsync(note);
             } else {
+                Console.WriteLine($"New - ID: {notesCount}");
+                note.ID = notesCount;
                 return _DB.InsertAsync(note);
             }
         }

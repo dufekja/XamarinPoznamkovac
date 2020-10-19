@@ -22,10 +22,10 @@
             </Grid.ColumnDefinitions>
 
             <Label Text="Note Label: " Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="1" FontSize="30"/>
-            <Entry x:Name="NoteLabel" Keyboard="Text" Text="didwq" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
+            <Entry x:Name="NoteLabel" Keyboard="Text" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
 
             <Label Text="Note Content: " Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" FontSize="30"/>
-            <Editor x:Name="NoteText" Keyboard="Text" Text="didqjw" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4"/>
+            <Editor x:Name="NoteText" Keyboard="Text" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4"/>
 
             <Button Clicked="ProcessNote" Text="Save Note"  Grid.Column="2" Grid.Row="5"/>
         </Grid>

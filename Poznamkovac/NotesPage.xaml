@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Poznamkovac.NotesPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="OnAddNote"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="Poznamkovac" HorizontalOptions="Center" FontSize="30"/>
-                <Button Clicked="AddNotesPage" Text="Add Note"/>
-            </StackLayout>
             <ScrollView>
-                <ListView x:Name="NotesView" Margin="10">
+                <ListView x:Name="NotesView" RowHeight="70">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -17,20 +18,21 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="35*"/>
                                         <ColumnDefinition Width="35*"/>
-                                        <ColumnDefinition Width="15*"/>
-                                        <ColumnDefinition Width="15*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="20*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="50*"/>
-                                        <RowDefinition Height="30*"/>
+                                        <RowDefinition Height="10*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     
+                                    <Label Margin="2" Text="{Binding Label}" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="2" FontAttributes="Bold"/>
+                                    <Label Margin="2" Text="{Binding Text}" Grid.Column="0" Grid.Row="2"/>
+                                    <Label Text="{Binding Date}" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" VerticalOptions="Center"/>
                                     
-                                    <Label Text="{Binding Label}" Grid.Column="0" Grid.Row="0"  Grid.ColumnSpan="2" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Text}" Grid.Column="0" Grid.Row="1"/>
-                                    <Label Text="{Binding Date}" Grid.Column="1" Grid.Row="1"/>
-                                    <Button Clicked="AddNotesPage" Text="Edit" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
-                                    <Button Clicked="DeleteNote" Text="Delete" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"/>
+                                    <Button Clicked="OnRewriteNote" ClassId="{Binding ID}" Text="Edit" FontSize="12" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"/>
+                                    <Button Clicked="OnDeleteNote" ClassId="{Binding ID}" Text="Delete" FontSize="12" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

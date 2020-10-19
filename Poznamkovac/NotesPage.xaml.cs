@@ -11,44 +11,53 @@ using Xamarin.Forms.Xaml;
 namespace Poznamkovac {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotesPage : ContentPage {
+
+        public static List<Note> notesList;
+
         public NotesPage() {
             InitializeComponent();
-    
+
+            LoadDB();
         }
-       
-        public void AddNotesPage(object sender, EventArgs args) {
-            Navigation.PushAsync(new AddNotesPage());
+
+        /** Event methods */
+
+        public void OnAddNote(object sender, EventArgs args) {
+            Navigation.PushAsync(new AddNotesPage(null, notesList));
+        }
+
+        public void OnRewriteNote(object sender, EventArgs args) {
+
+            Button clickedButton = (Button)sender;
+            string ID = clickedButton.ClassId.ToString();
+
+            Navigation.PushAsync(new AddNotesPage(ID, notesList));
         }
 
         public void OnDeleteNote(object sender, EventArgs args) {
 
-            TappedEventArgs tappedEventArgs = (TappedEventArgs)args;
+            Button clickedButton = (Button)sender;
+            string ID = clickedButton.ClassId.ToString();
 
-            //DeleteNote(SelectNoteById();
+            DeleteNote(int.Parse(ID));
+            LoadDB();
         }
 
-        protected async void DeleteNote(Note note) {
+        /** Async Tasks */
+        
+        protected async void DeleteNote(int ID) {
+            Note note = await App.Database.GetNoteAsync(ID);
             await App.Database.DeleteNoteAsync(note);
-        }
 
-        protected async Task<Note> SelectNoteById(int id) {
-            Note note = await App.Database.GetNoteAsync(id);
-            return note;
-        }
-
-        protected override async void OnAppearing() {
-            base.OnAppearing();
-
-            List<Note> notesList = await App.Database.GetNotesAsync();
-            List<string> stringList = new List<string>();
-
-            foreach (Note note in notesList) {
-                stringList.Add($"{note.Label} - {note.Text}, {note.Date}");
-            }
-
+            NotesView.ItemsSource = null;
             NotesView.ItemsSource = notesList;
-
         }
+
+        protected async void LoadDB() {
+            notesList = await App.Database.GetNotesAsync();
+            NotesView.ItemsSource = notesList;
+        }
+
     }
 
 }
