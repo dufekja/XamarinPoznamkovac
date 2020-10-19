@@ -24,7 +24,7 @@ namespace Poznamkovac.Database {
         }
 
         public Task<int> SaveNoteAsync(Note note) {
-            if (note.ID != 0) {
+            if (note.ID != -1) {
                 return _DB.UpdateAsync(note);
             } else {
                 return _DB.InsertAsync(note);

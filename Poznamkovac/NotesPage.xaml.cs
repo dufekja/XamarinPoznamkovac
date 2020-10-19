@@ -20,8 +20,20 @@ namespace Poznamkovac {
             Navigation.PushAsync(new AddNotesPage());
         }
 
-        public void EditNotesPage(object sender, EventArgs args) {
-            Navigation.PushAsync(new AddNotesPage(1));
+        public void OnDeleteNote(object sender, EventArgs args) {
+
+            TappedEventArgs tappedEventArgs = (TappedEventArgs)args;
+
+            //DeleteNote(SelectNoteById();
+        }
+
+        protected async void DeleteNote(Note note) {
+            await App.Database.DeleteNoteAsync(note);
+        }
+
+        protected async Task<Note> SelectNoteById(int id) {
+            Note note = await App.Database.GetNoteAsync(id);
+            return note;
         }
 
         protected override async void OnAppearing() {

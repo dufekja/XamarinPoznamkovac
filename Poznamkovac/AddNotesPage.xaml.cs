@@ -11,35 +11,34 @@ namespace Poznamkovac {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddNotesPage : ContentPage {
 
-        public static int ID;
+        public static int id;
 
-        public AddNotesPage(int id = -1) {
+        public AddNotesPage(int _id = -1) {
             InitializeComponent();
 
-            ID = id;
+            id = _id;
 
         }
 
         public void ProcessNote(object sender, EventArgs args) {
-            // new note
-            if (ID == -1) {
-                Note note = new Note {
-                    Label = NoteLabel.Text.ToString(),
-                    Text = NoteText.Text.ToString(),
-                    Date = DateTime.UtcNow
-                };
 
-                SaveNote(note);
-                Navigation.PopAsync();
+            
 
-            } else {
-                // edit note
-            }
+            Note note = new Note {
+                Label = NoteLabel.Text.ToString(),
+                Text = NoteText.Text.ToString(),
+                Date = DateTime.UtcNow
+            };
+
+            if (id != -1)
+                note.ID = id;
+
+            SaveNote(note);
+            Navigation.PopAsync();
         }
 
         protected async void SaveNote(Note note) {
             await App.Database.SaveNoteAsync(note);
         }
-
     }
 }
