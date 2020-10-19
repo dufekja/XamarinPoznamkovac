@@ -13,23 +13,15 @@ namespace Poznamkovac {
     public partial class NotesPage : ContentPage {
         public NotesPage() {
             InitializeComponent();
-
-            Note note = new Note {
-                Label = "label2",
-                Text = "djwqi",
-                Date = DateTime.UtcNow
-            };
-
-            //SaveNote(note);
-            
+    
         }
        
         public void AddNotesPage(object sender, EventArgs args) {
             Navigation.PushAsync(new AddNotesPage());
         }
 
-        protected async void SaveNote(Note note) {
-            await App.Database.SaveNoteAsync(note);
+        public void EditNotesPage(object sender, EventArgs args) {
+            Navigation.PushAsync(new AddNotesPage(1));
         }
 
         protected override async void OnAppearing() {

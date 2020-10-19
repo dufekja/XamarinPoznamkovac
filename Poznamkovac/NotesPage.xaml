@@ -7,6 +7,7 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Poznamkovac" HorizontalOptions="Center" FontSize="30"/>
                 <Button Clicked="AddNotesPage" Text="Add Note"/>
+                <Button Clicked="EditNotesPage" Text="Edit Note id 1"/>
             </StackLayout>
             <ScrollView>
                 <ListView x:Name="NotesView" Margin="10">
