@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "v/xEJhM9tC/chGUGZfynn7OLodYgPxUEhB5a6jSfyKdIqv2ShxkYgu3lS7dfDPbUahjL59YD8kH3DkxxveLx4g==",
+  "dgSpecHash": "7UvoFaZHVVM+uN3wRVDTN3EkP/wStvrjk8ub0EYk3hZJnuHW4uBMx4CzqvoG02QyhjnxSDPH6wJYgSCMKpO1Gw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jandu\\Desktop\\Poznamkovac\\Poznamkovac\\Poznamkovac\\Poznamkovac.csproj",
+  "projectFilePath": "C:\\Users\\jandu\\Desktop\\XamarinPoznamkovac\\XamarinPoznamkovac\\Poznamkovac\\Poznamkovac.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jandu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\jandu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

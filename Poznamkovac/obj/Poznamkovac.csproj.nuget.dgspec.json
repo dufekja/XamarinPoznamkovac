@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jandu\\Desktop\\Poznamkovac\\Poznamkovac\\Poznamkovac\\Poznamkovac.csproj": {}
+    "C:\\Users\\jandu\\Desktop\\XamarinPoznamkovac\\XamarinPoznamkovac\\Poznamkovac\\Poznamkovac.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jandu\\Desktop\\Poznamkovac\\Poznamkovac\\Poznamkovac\\Poznamkovac.csproj": {
+    "C:\\Users\\jandu\\Desktop\\XamarinPoznamkovac\\XamarinPoznamkovac\\Poznamkovac\\Poznamkovac.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jandu\\Desktop\\Poznamkovac\\Poznamkovac\\Poznamkovac\\Poznamkovac.csproj",
+        "projectUniqueName": "C:\\Users\\jandu\\Desktop\\XamarinPoznamkovac\\XamarinPoznamkovac\\Poznamkovac\\Poznamkovac.csproj",
         "projectName": "Poznamkovac",
-        "projectPath": "C:\\Users\\jandu\\Desktop\\Poznamkovac\\Poznamkovac\\Poznamkovac\\Poznamkovac.csproj",
+        "projectPath": "C:\\Users\\jandu\\Desktop\\XamarinPoznamkovac\\XamarinPoznamkovac\\Poznamkovac\\Poznamkovac.csproj",
         "packagesPath": "C:\\Users\\jandu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jandu\\Desktop\\Poznamkovac\\Poznamkovac\\Poznamkovac\\obj\\",
+        "outputPath": "C:\\Users\\jandu\\Desktop\\XamarinPoznamkovac\\XamarinPoznamkovac\\Poznamkovac\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -3,11 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Poznamkovac.NotesPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Add note"/>
-            <ListView x:Name="NotesList">
-                
-            </ListView>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Poznamkovac" HorizontalOptions="Center" FontSize="30"/>
+                <Button Clicked="AddNotesPage" Text="Add Note"/>
+            </StackLayout>
+            <ScrollView>
+                <ListView x:Name="NotesView" Margin="10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Label}"
+                                      Detail="{Binding Date}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wmIiRDKaVhYFIZt6elcHsjSrEJv/wdFS2gFAg+AaYBJ+vL7jeqgPcIc3NFbSQYsbBDSjqYoYlvsSPQDofq4h1g==",
+  "dgSpecHash": "p21o0tiwb1w6HUyV8v7EtOslNm8+V9pfry/9eIdM3ISLank8HPBiyQgmlWQnALO6KHl8oZl0YpBdOW1uutDpaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jandu\\Desktop\\Poznamkovac\\Poznamkovac\\Poznamkovac.Android\\Poznamkovac.Android.csproj",
+  "projectFilePath": "C:\\Users\\jandu\\Desktop\\XamarinPoznamkovac\\XamarinPoznamkovac\\Poznamkovac.Android\\Poznamkovac.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jandu\\.nuget\\packages\\sqlite-net-pcl\\1.7.335\\sqlite-net-pcl.1.7.335.nupkg.sha512",
     "C:\\Users\\jandu\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.3\\sqlitepclraw.bundle_green.2.0.3.nupkg.sha512",
