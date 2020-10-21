@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +14,8 @@ namespace Poznamkovac.Database {
             _DB.CreateTableAsync<Note>().Wait();
         }
 
-        public Task<List<Note>> GetNotesAsync() {
-            return _DB.Table<Note>().ToListAsync();
+        public async Task<List<Note>> GetNotesAsync() {
+            return await _DB.Table<Note>().ToListAsync();
         }
 
         public Task<Note> GetNoteAsync(int id) {
@@ -23,19 +24,22 @@ namespace Poznamkovac.Database {
                             .FirstOrDefaultAsync();
         }
 
-        public Task<int> SaveNoteAsync(Note note, int notesCount) {
-            if (note.ID != -69) {
-                Console.WriteLine("Updajt");
-                return _DB.UpdateAsync(note);
-            } else {
-                Console.WriteLine($"New - ID: {notesCount}");
-                note.ID = notesCount;
-                return _DB.InsertAsync(note);
-            }
+        public async Task<int> SaveNoteAsync(Note note) {
+            int insertedRows = await _DB.InsertAsync(note);
+            return insertedRows;
         }
 
-        public Task<int> DeleteNoteAsync(Note note) {
-            return _DB.DeleteAsync(note);
+        public async Task EditNoteAsync(int id, string label, string text) {
+            Note note = await GetNoteAsync(id);
+
+            note.Label = label;
+            note.Text = text;
+            note.Date = DateTime.UtcNow;
+            await _DB.UpdateAsync(note);
+        }
+
+        public async void DeleteNoteAsync(Note note) {
+            int deletedRows = await _DB.DeleteAsync(note);
         }
     }
 }

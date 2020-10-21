@@ -11,44 +11,49 @@ namespace Poznamkovac {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddNotesPage : ContentPage {
 
-        public static List<Note> noteList;
-        public static int notesCount;
         public static string ID;
 
-        public AddNotesPage(string ID, List<Note> _noteList) {
-
+        public AddNotesPage(string _ID) { 
             InitializeComponent();
 
-            noteList = _noteList;
-            notesCount = noteList.Count;
+            ID = _ID;
 
             if (ID != null) {
-                Note note = noteList[int.Parse(ID)];
-                NoteLabel.Text = note.Label;
-                NoteText.Text = note.Text;
+                LoadNote(int.Parse(ID));
             }
         }
 
         public void ProcessNote(object sender, EventArgs args) {
 
-            Note note = new Note {
-                Label = NoteLabel.Text.ToString(),
-                Text = NoteText.Text.ToString(),
-                Date = DateTime.UtcNow
-            };
-
             if (ID != null) {
-                note.ID = int.Parse(ID);
+                EditNote(int.Parse(ID), NoteLabel.Text.ToString(), NoteText.Text.ToString());
+               
             } else {
-                note.ID = -69;
+                Note note = new Note {
+                    Label = NoteLabel.Text.ToString(),
+                    Text = NoteText.Text.ToString(),
+                    Date = DateTime.UtcNow
+                };
+                SaveNote(note);
             }
-
-            SaveNote(note, notesCount);
+            Navigation.PopAsync();
+            Navigation.InsertPageBefore(new NotesPage(), this);
             Navigation.PopAsync();
         }
 
-        protected async void SaveNote(Note note, int notesCount) {
-            await App.Database.SaveNoteAsync(note, notesCount);
+        private async void EditNote(int id, string label, string text) {
+            await App.Database.EditNoteAsync(id, label, text);
         }
+
+        private async void LoadNote(int id) {
+            Note note = await App.Database.GetNoteAsync(id);
+            NoteLabel.Text = note.Label.ToString();
+            NoteText.Text = note.Text.ToString();
+        }
+
+        private async void SaveNote(Note note) {
+            int Savedrows = await App.Database.SaveNoteAsync(note);
+        }
+
     }
 }
