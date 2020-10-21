@@ -11,29 +11,38 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <ScrollView>
-                <ListView x:Name="NotesView" RowHeight="90">
+                <ListView x:Name="NotesView" RowHeight="160">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid BackgroundColor="#333333" Margin="3">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="35*"/>
-                                        <ColumnDefinition Width="35*"/>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="30*"/>
                                         <ColumnDefinition Width="20*"/>
                                         <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="35*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="25"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     
-                                    <Label Margin="2" Text="{Binding Label}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontAttributes="Bold" FontSize="18" TextColor="#ffffff"/>
-                                    <Label Margin="2" Text="{Binding Date}" Grid.Column="0" Grid.Row="1" FontSize="10" TextColor="LightGray"/>
-                                    <Label Margin="2" Text="{Binding Text}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" FontSize="12" LineBreakMode="CharacterWrap" TextColor="#ffffff"/>
+                                    <Label Margin="2" Text="{Binding Label}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18" TextColor="#ffffff"/>
 
-                                    <Button Clicked="OnRewriteNote" ClassId="{Binding ID}" Text="Edit" BackgroundColor="#222222" TextColor="#ffffff" FontSize="12" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"/>
-                                    <Button Clicked="OnDeleteNote" ClassId="{Binding ID}" Text="Delete" BackgroundColor="#222222" TextColor="#ffffff" FontSize="12" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2"/>
+                                    <Label Text="Created at:" Grid.Column="0" Grid.Row="1" FontSize="14" TextColor="LightGray" VerticalTextAlignment="Center" HorizontalOptions="End"/>
+                                    <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalTextAlignment="Center" FontSize="12" TextColor="LightGray"/>
+
+                                    <Label Text="Updated at:" Grid.Column="0" Grid.Row="2" FontSize="14" TextColor="LightGray" VerticalTextAlignment="Center" HorizontalOptions="End"/>
+                                    <Label Text="{Binding Date}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" FontSize="12" VerticalTextAlignment="Center" TextColor="LightGray"/>
+
+                                    <Label Padding="8" Text="{Binding Text}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2" FontSize="14" LineBreakMode="CharacterWrap" TextColor="#ffffff"/>
+
+                                    <Button Clicked="OnRewriteNote" ClassId="{Binding ID}" Text="Edit" BackgroundColor="#222222" TextColor="#ffffff" FontSize="10" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2"/>
+                                    <Button Clicked="OnDeleteNote" ClassId="{Binding ID}" Text="Delete" BackgroundColor="#222222" TextColor="#ffffff" FontSize="10" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

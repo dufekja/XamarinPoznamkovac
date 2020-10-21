@@ -29,10 +29,12 @@ namespace Poznamkovac {
                 EditNote(int.Parse(ID), NoteLabel.Text.ToString(), NoteText.Text.ToString());
                
             } else {
+                DateTime date = DateTime.UtcNow;
                 Note note = new Note {
                     Label = NoteLabel.Text.ToString(),
                     Text = NoteText.Text.ToString(),
-                    Date = DateTime.UtcNow
+                    CreationDate = date,
+                    Date = date
                 };
                 SaveNote(note);
             }
